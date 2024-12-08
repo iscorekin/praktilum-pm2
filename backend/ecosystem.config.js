@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env.deploy' });
 
 module.exports = {
   apps: [{
-    name: 'backend',
+    name: '2backend',
     script: 'npm',
     args: 'run start',
   }],
@@ -15,7 +15,8 @@ module.exports = {
       ref: process.env.REF,
       repo: process.env.REPO,
       path: process.env.REMOTE_PATH,
-      'post-deploy': `cd backend && npm install && scp ./.env ${process.env.REMOTE_USER}@${process.env.REMOTE_HOST}:${process.env.REMOTE_PATH} && pm2 startOrRestart ecosystem.config.js --env production`,
+      'pre-deploy-local': `scp ./.env ${process.env.REMOTE_USER}@${process.env.REMOTE_HOST}:${process.env.REMOTE_PATH}`,
+      'post-deploy': 'cd backend && npm install && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 };
