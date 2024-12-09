@@ -16,8 +16,7 @@ module.exports = {
       repo: process.env.REPO,
       path: process.env.REMOTE_PATH,
       // 'pre-deploy-local': `scp ./.env ${process.env.REMOTE_USER}@${process.env.REMOTE_HOST}:${process.env.REMOTE_PATH}`,
-      // 'post-deploy': 'cd backend && npm i && npm run build && pm2 startOrRestart ecosystem.config.js --env production',
-      'post-setup': 'cd backend && npm install && pm2 startOrRestart ecosystem.config.js --env production',
+      'post-deploy': 'cd backend && npm i && npm run build && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 };
