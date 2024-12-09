@@ -16,7 +16,7 @@ module.exports = {
       repo: process.env.REPO,
       path: process.env.REMOTE_PATH,
       // 'pre-deploy-local': `scp ./.env ${process.env.REMOTE_USER}@${process.env.REMOTE_HOST}:${process.env.REMOTE_PATH}`,
-      'post-setup': 'chmod +x ./post-deploy.sh && ./post-deploy.sh',
+      'post-deploy': 'chmod +x ./post-deploy.sh && ./post-deploy.sh',
     },
   },
 };
